@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 
 type GlassCardProps = React.HTMLAttributes<HTMLDivElement> & {
-  as?: keyof JSX.IntrinsicElements;
+  as?: React.ElementType;
 };
 
 export function GlassCard({ as: Tag = "div", className, children, ...rest }: GlassCardProps) {
