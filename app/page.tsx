@@ -161,7 +161,7 @@ export default function Home() {
                 Join our IB program and earn rewards like <span className="text-[#C9A646] font-semibold">iPads, gadgets, or Dubai tours</span> based on your trading activity and referrals.
               </p>
               <div className="pt-2">
-                <Button className="text-lg px-8 py-4">Know More / Apply Now →</Button>
+                <Button className="text-lg px-8 py-4">Apply Now →</Button>
               </div>
             </div>
           </div>
