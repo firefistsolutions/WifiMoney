@@ -11,7 +11,7 @@ type Course = {
   title: string;
   desc: string;
   duration: string;
-  level: "Beginner" | "Intermediate" | "Advanced";
+  level: "Beginner" | "Intermediate" | "Advanced" | "All Levels";
   icon: string;
   learnPoints: string[];
   trainerName: string;

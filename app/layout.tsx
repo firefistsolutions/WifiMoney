@@ -33,7 +33,7 @@ export default function RootLayout({
         <ScrollProgress />
         <Header />
         <main id="main" className="mx-auto max-w-6xl px-4 ">
-          {children}
+        {children}
         </main>
         <Footer />
         <FloatingChat />
