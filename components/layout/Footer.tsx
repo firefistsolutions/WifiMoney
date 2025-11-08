@@ -51,14 +51,19 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-6xl px-4 py-6 text-xs text-white/60 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-          <span>© {new Date().getFullYear()} WiFi Money. All rights reserved.</span>
-          <span className="space-x-3">
-            <Link href="#">Privacy Policy</Link>
-            <Link href="#">Terms</Link>
-            <Link href="#">Disclaimer</Link>
-          </span>
-          <span>Made with ❤️ in Pune, India</span>
+        <div className="mx-auto max-w-6xl px-4 py-6 space-y-4">
+          <div className="text-xs text-white/60 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <span>© {new Date().getFullYear()} WiFi Money. All rights reserved.</span>
+            <span className="space-x-3">
+              <Link href="#">Privacy Policy</Link>
+              <Link href="#">Terms</Link>
+              <Link href="#">Disclaimer</Link>
+            </span>
+            <span>Made with ❤️ in Pune, India</span>
+          </div>
+          <div className="text-xs text-white/50 text-center max-w-4xl mx-auto leading-relaxed">
+            Trading involves financial risk and may not be suitable for all. WiFi Money provides education, not investment advice. Past results do not guarantee future performance.
+          </div>
         </div>
       </div>
     </footer>
