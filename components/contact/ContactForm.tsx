@@ -21,7 +21,11 @@ type FormErrors = {
   interest?: string;
 };
 
-export default function ContactForm() {
+type ContactFormProps = {
+  hideHeading?: boolean;
+};
+
+export default function ContactForm({ hideHeading = false }: ContactFormProps) {
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
@@ -108,7 +112,9 @@ export default function ContactForm() {
 
   return (
     <GlassCard className="p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">Get in Touch</h2>
+      {!hideHeading && (
+        <h2 className="text-2xl font-bold text-white mb-6">Get in Touch</h2>
+      )}
       
       <form onSubmit={handleSubmit} className="space-y-6">
         <FormField

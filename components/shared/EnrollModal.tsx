@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import { X } from "lucide-react";
 import ContactForm from "@/components/contact/ContactForm";
-import GlassCard from "@/components/shared/GlassCard";
 
 type EnrollModalProps = {
   isOpen: boolean;
@@ -45,10 +44,10 @@ export default function EnrollModal({ isOpen, onClose, title = "Get Started" }: 
         className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <GlassCard className="p-8 relative">
+        <div className="relative">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors z-10"
+            className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors z-10 bg-black/50 rounded-full p-2"
             aria-label="Close modal"
           >
             <X className="w-6 h-6" />
@@ -63,8 +62,8 @@ export default function EnrollModal({ isOpen, onClose, title = "Get Started" }: 
             </p>
           </div>
 
-          <ContactForm />
-        </GlassCard>
+          <ContactForm hideHeading />
+        </div>
       </div>
     </div>
   );
