@@ -35,7 +35,7 @@ export default function Home() {
             <RevealAnimation delay={0.32}>
               <div className="mt-6 space-y-2 text-sm text-white/70">
                 <div>Trusted by 5,000+ learners across 20+ countries 🌍</div>
-                <div>Average student ROI: 8–12% monthly (educational purpose only)</div>
+                <div>Join thousands of traders building consistent income streams</div>
               </div>
             </RevealAnimation>
           </div>

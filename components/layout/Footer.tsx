@@ -59,7 +59,7 @@ export default function Footer() {
               <Link href="#">Terms</Link>
               <Link href="#">Disclaimer</Link>
             </span>
-            <span>Made with ❤️ in Pune, India</span>
+            <span>Made in Dubai</span>
           </div>
           <div className="text-xs text-white/50 text-center max-w-4xl mx-auto leading-relaxed">
             Trading involves financial risk and may not be suitable for all. WiFi Money provides education, not investment advice. Past results do not guarantee future performance.

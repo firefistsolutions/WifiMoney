@@ -9,7 +9,6 @@ const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/courses", label: "Courses" },
   { href: "/results", label: "Results" },
-  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 

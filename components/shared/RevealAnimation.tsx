@@ -28,7 +28,7 @@ export default function RevealAnimation({ children, delay = 0 }: RevealAnimation
   }, []);
 
   return (
-    <div ref={ref} className={`reveal-animation ${inView ? "is-visible" : ""}`} style={{ transitionDelay: `${delay}s` }}>
+    <div ref={ref} className={`reveal-animation h-full ${inView ? "is-visible" : ""}`} style={{ transitionDelay: `${delay}s` }}>
       {children}
     </div>
   );
