@@ -1,3 +1,5 @@
+"use client";
+
 import SectionHeading from "@/components/shared/SectionHeading";
 import Button from "@/components/shared/Button";
 import VideoBackground from "@/components/shared/VideoBackground";
@@ -11,8 +13,11 @@ import Testimonials from "@/components/home/Testimonials";
 import JoinMovement from "@/components/home/JoinMovement";
 import GlobalCommunity from "@/components/home/GlobalCommunity";
 import { Calendar, FileText, BarChart3, Video as VideoIcon } from "lucide-react";
+import { useEnrollModal } from "@/components/shared/EnrollModalProvider";
 
 export default function Home() {
+  const { openModal } = useEnrollModal();
+  
   return (
     <>
       {/* Hero - Full Width */}
@@ -28,7 +33,7 @@ export default function Home() {
             </RevealAnimation>
             <RevealAnimation delay={0.24}>
               <div className="mt-6 flex items-center gap-4">
-                <Button>Join Free Batch →</Button>
+                <Button onClick={() => openModal("Join Free Batch")}>Join Free Batch →</Button>
                 <Button variant="glass">Watch How It Works →</Button>
               </div>
             </RevealAnimation>
@@ -98,7 +103,7 @@ export default function Home() {
           <h3 className="text-2xl md:text-3xl font-bold">Ready to start your journey?</h3>
           <p className="text-white/70 max-w-2xl">Learn from industry experts, join live sessions, and become a consistent trader with WiFi Money.</p>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button>Join WiFi Money Now →</Button>
+            <Button onClick={() => openModal("Join WiFi Money")}>Join WiFi Money Now →</Button>
             <Button variant="glass">Explore Courses</Button>
           </div>
         </div>
@@ -161,7 +166,7 @@ export default function Home() {
                 Join our IB program and earn rewards like <span className="text-[#C9A646] font-semibold">iPads, gadgets, or Dubai tours</span> based on your trading activity and referrals.
               </p>
               <div className="pt-2">
-                <Button className="text-lg px-8 py-4">Apply Now →</Button>
+                <Button className="text-lg px-8 py-4" onClick={() => openModal("Apply for IB Program")}>Apply Now →</Button>
               </div>
             </div>
           </div>
@@ -207,7 +212,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="md:ml-6">
-                <Button className="text-lg px-8 py-4">Register Free →</Button>
+                <Button className="text-lg px-8 py-4" onClick={() => openModal("Register for Live Session")}>Register Free →</Button>
               </div>
             </div>
           </div>
@@ -258,9 +263,11 @@ export default function Home() {
                 <p className="text-sm text-white/70 mb-6 flex-1">
                   Get daily insights, trade setups, and market analysis delivered directly to your Telegram.
                 </p>
-                <Button variant="outline" className="w-full mt-auto group-hover:bg-[#C9A646] group-hover:text-black group-hover:border-[#C9A646] transition-all">
-                  Join Telegram →
-                </Button>
+                <a href="https://t.me/wifimoneyai" target="_blank" rel="noopener noreferrer" className="block">
+                  <Button variant="outline" className="w-full mt-auto group-hover:bg-[#C9A646] group-hover:text-black group-hover:border-[#C9A646] transition-all">
+                    Join Telegram →
+                  </Button>
+                </a>
               </div>
             </GlassCard>
           </RevealAnimation>

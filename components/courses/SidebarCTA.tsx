@@ -4,8 +4,10 @@ import React from "react";
 import GlassCard from "@/components/shared/GlassCard";
 import Button from "@/components/shared/Button";
 import { Check } from "lucide-react";
+import { useEnrollModal } from "@/components/shared/EnrollModalProvider";
 
 export default function SidebarCTA() {
+  const { openModal } = useEnrollModal();
   const features = [
     "All courses included",
     "Lifetime access",
@@ -37,7 +39,7 @@ export default function SidebarCTA() {
               <span className="text-3xl font-extrabold gradient-text-gold">$300</span>
               <span className="text-sm text-white/50 line-through">$500</span>
             </div>
-            <Button className="w-full">Join the Academy</Button>
+            <Button className="w-full" onClick={() => openModal("Join the Academy")}>Join the Academy</Button>
           </div>
 
           <div className="text-xs text-center text-white/60 pt-2 border-t border-white/10">

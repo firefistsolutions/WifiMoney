@@ -38,7 +38,7 @@ export default function Footer() {
             <a href="#" aria-label="WhatsApp" className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition">
               <MessageCircle className="text-white" size={20} strokeWidth={1.8} />
             </a>
-            <a href="#" aria-label="Telegram" className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition">
+            <a href="https://t.me/wifimoneyai" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition">
               <Send className="text-white" size={20} strokeWidth={1.8} />
             </a>
             <a href="#" aria-label="Instagram" className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition">

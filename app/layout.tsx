@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import FloatingChat from "@/components/layout/FloatingChat";
+import { EnrollModalProvider } from "@/components/shared/EnrollModalProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,14 +30,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white overflow-x-hidden`}>
-        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-black text-white px-3 py-2 rounded">Skip to main content</a>
-        <ScrollProgress />
-        <Header />
-        <main id="main" className="mx-auto max-w-6xl px-4 ">
-        {children}
-        </main>
-        <Footer />
-        <FloatingChat />
+        <EnrollModalProvider>
+          <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-black text-white px-3 py-2 rounded">Skip to main content</a>
+          <ScrollProgress />
+          <Header />
+          <main id="main" className="mx-auto max-w-6xl px-4 ">
+          {children}
+          </main>
+          <Footer />
+          <FloatingChat />
+        </EnrollModalProvider>
       </body>
     </html>
   );

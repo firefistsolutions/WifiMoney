@@ -5,6 +5,7 @@ import RevealAnimation from "@/components/shared/RevealAnimation";
 import CoursesList from "@/components/courses/CoursesList";
 import SidebarCTA from "@/components/courses/SidebarCTA";
 import { CourseCardData } from "@/components/courses/CourseCard";
+import { useEnrollModal } from "@/components/shared/EnrollModalProvider";
 
 const ALL_COURSES: CourseCardData[] = [
   {
@@ -70,9 +71,10 @@ const ALL_COURSES: CourseCardData[] = [
 ];
 
 export default function CoursesPage() {
+  const { openModal } = useEnrollModal();
+  
   const handleEnroll = (course: CourseCardData) => {
-    // Navigate to enroll page or open enrollment modal
-    window.location.href = `/enroll?course=${course.id}`;
+    openModal(`Enroll in ${course.title}`);
   };
 
   return (

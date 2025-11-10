@@ -8,7 +8,7 @@ export default function FloatingChat() {
 
   // Replace with your actual WhatsApp and Telegram links
   const whatsappLink = "https://wa.me/1234567890"; // Replace with your WhatsApp number
-  const telegramLink = "https://t.me/yourusername"; // Replace with your Telegram username
+  const telegramLink = "https://t.me/wifimoneyai";
 
   return (
     <div className="fixed bottom-6 right-6 z-50">

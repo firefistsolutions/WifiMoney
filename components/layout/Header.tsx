@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import Button from "@/components/shared/Button";
+import { useEnrollModal } from "@/components/shared/EnrollModalProvider";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
@@ -15,6 +16,7 @@ const NAV_ITEMS = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { openModal } = useEnrollModal();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 8);
@@ -48,7 +50,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Button>Join Now</Button>
+          <Button onClick={() => openModal("Join WiFi Money")}>Join Now</Button>
         </div>
 
         <button
@@ -77,7 +79,7 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Button className="w-full">Join Now</Button>
+          <Button className="w-full" onClick={() => openModal("Join WiFi Money")}>Join Now</Button>
         </div>
       </div>
     </header>

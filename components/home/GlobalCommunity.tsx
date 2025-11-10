@@ -1,9 +1,12 @@
+"use client";
+
 import React from 'react';
 import SectionHeading from '@/components/shared/SectionHeading';
 import RevealAnimation from '@/components/shared/RevealAnimation';
 import GlassCard from '@/components/shared/GlassCard';
 import Button from '@/components/shared/Button';
 import { MapPin, Users, DollarSign, GraduationCap, Video, Wrench, MessageCircle } from 'lucide-react';
+import { useEnrollModal } from '@/components/shared/EnrollModalProvider';
 
 const stats = [
   { icon: MapPin, value: '20+', label: 'Countries' },
@@ -31,6 +34,8 @@ const communityFeatures = [
 ];
 
 export default function GlobalCommunity() {
+  const { openModal } = useEnrollModal();
+  
   return (
     <>
       {/* Community & Mentorship Section */}
@@ -55,7 +60,7 @@ export default function GlobalCommunity() {
         </div>
 
         <div className="text-center pt-4">
-          <Button>Join Our Telegram Community →</Button>
+          <Button onClick={() => openModal("Join Our Telegram Community")}>Join Our Telegram Community →</Button>
         </div>
       </section>
 
@@ -82,7 +87,7 @@ export default function GlobalCommunity() {
             WiFi Money is empowering traders across Asia, the Middle East, and Africa through practical education and transparent mentorship.
           </p>
 
-          <Button>Become Part of Our Global Network →</Button>
+          <Button onClick={() => openModal("Join Our Global Network")}>Become Part of Our Global Network →</Button>
         </div>
 
         {/* Stats Grid */}

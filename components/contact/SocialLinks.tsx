@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function SocialLinks() {
   const whatsappLink = "https://wa.me/1234567890";
-  const telegramLink = "https://t.me/yourusername";
+  const telegramLink = "https://t.me/wifimoneyai";
   const instagramLink = "https://instagram.com/yourusername";
   const youtubeLink = "https://youtube.com/@yourusername";
 

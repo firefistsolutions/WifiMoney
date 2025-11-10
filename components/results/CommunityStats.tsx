@@ -5,8 +5,11 @@ import AnimatedCounter from "@/components/shared/AnimatedCounter";
 import RevealAnimation from "@/components/shared/RevealAnimation";
 import SectionHeading from "@/components/shared/SectionHeading";
 import Button from "@/components/shared/Button";
+import { useEnrollModal } from "@/components/shared/EnrollModalProvider";
 
 export default function CommunityStats() {
+  const { openModal } = useEnrollModal();
+  
   return (
     <section className="space-y-12">
       <SectionHeading
@@ -61,7 +64,7 @@ export default function CommunityStats() {
       <div className="text-center pt-8">
         <RevealAnimation delay={0.4}>
           <p className="text-xl text-white/80 mb-6">Want to be next?</p>
-          <Button>Join the Community →</Button>
+          <Button onClick={() => openModal("Join the Community")}>Join the Community →</Button>
         </RevealAnimation>
       </div>
     </section>

@@ -6,6 +6,7 @@ import Button from "@/components/shared/Button";
 import placeholder from "@/utils/placeholders";
 import React, { useState } from "react";
 import { X } from "lucide-react";
+import { useEnrollModal } from "@/components/shared/EnrollModalProvider";
 
 type Course = {
   title: string;
@@ -97,6 +98,8 @@ type CourseModalProps = {
 };
 
 function CourseModal({ course, onClose }: CourseModalProps) {
+  const { openModal } = useEnrollModal();
+  
   if (!course) return null;
 
   return (
@@ -145,7 +148,7 @@ function CourseModal({ course, onClose }: CourseModalProps) {
           </div>
         </div>
 
-        <Button className="w-full">Join Next Batch →</Button>
+        <Button className="w-full" onClick={() => { onClose(); openModal(`Join Next Batch - ${course.title}`); }}>Join Next Batch →</Button>
       </div>
     </div>
   );
