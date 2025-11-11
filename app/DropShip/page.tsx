@@ -8,16 +8,12 @@ import GlassCard from "@/components/shared/GlassCard";
 import IconBox from "@/components/shared/IconBox";
 import AnimatedCounter from "@/components/shared/AnimatedCounter";
 import placeholder from "@/utils/placeholders";
-import CourseBreakdown from "@/components/home/CourseBreakdown";
-import Testimonials from "@/components/home/Testimonials";
-import JoinMovement from "@/components/home/JoinMovement";
-import GlobalCommunity from "@/components/home/GlobalCommunity";
-import { Calendar, FileText, BarChart3, Video as VideoIcon } from "lucide-react";
+import { Calendar, FileText, ShoppingCart, Package, Video as VideoIcon, TrendingUp, BarChart3 } from "lucide-react";
 import { useEnrollModal } from "@/components/shared/EnrollModalProvider";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Home() {
+export default function DropShip() {
   const { openModal } = useEnrollModal();
   
   return (
@@ -28,10 +24,10 @@ export default function Home() {
         <div className="flex h-full items-center max-w-6xl mx-auto px-4 md:px-6">
           <div className="max-w-2xl w-full">
             <RevealAnimation delay={0.08}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">Learn. Trade. Earn.  The Smart Way to Build a Trading Career</h1>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">Start. Scale. Succeed. The Smart Way to Build a Dropshipping Business</h1>
             </RevealAnimation>
             <RevealAnimation delay={0.16}>
-              <p className="mt-4 sm:mt-6 text-white/80 text-base sm:text-lg leading-relaxed">Get access to live sessions, expert mentorship, and real trading results — all in one community.</p>
+              <p className="mt-4 sm:mt-6 text-white/80 text-base sm:text-lg leading-relaxed">Get access to live sessions, expert mentorship, and proven dropshipping strategies — all in one community.</p>
             </RevealAnimation>
             <RevealAnimation delay={0.24}>
               <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
@@ -43,8 +39,8 @@ export default function Home() {
             </RevealAnimation>
             <RevealAnimation delay={0.32}>
               <div className="mt-6 sm:mt-8 space-y-2 text-xs sm:text-sm text-white/70">
-                <div>Trusted by 5,000+ learners across 20+ countries 🌍</div>
-                <div>Join thousands of traders building consistent income streams</div>
+                <div>Trusted by 5,000+ entrepreneurs across 20+ countries 🌍</div>
+                <div>Join thousands of dropshippers building successful online stores</div>
               </div>
             </RevealAnimation>
           </div>
@@ -58,9 +54,9 @@ export default function Home() {
       <section className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
         <RevealAnimation>
           <SectionHeading
-            overline="About WiFi Money"
-            title="What is WiFi Money?"
-            subtitle="WiFi Money isn't just a forex academy — it's a global movement of traders mastering financial freedom."
+            overline="About Dropshipping"
+            title="What is Dropshipping?"
+            subtitle="Dropshipping isn't just a business model — it's a global movement of entrepreneurs building profitable online stores without inventory."
             align="left"
           />
         </RevealAnimation>
@@ -68,7 +64,7 @@ export default function Home() {
           <div className="relative aspect-[4/3] w-full rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl">
             <Image
               src="/media/Home_about_img.jpg"
-              alt="WiFi Money - About"
+              alt="Dropshipping - About"
               fill
               className="object-cover object-center"
               priority
@@ -86,7 +82,7 @@ export default function Home() {
               <IconBox>🎯</IconBox>
               <div>
                 <h3 className="text-2xl font-bold">Our Mission</h3>
-                <p className="mt-2 text-white/70">To simplify Forex trading and make financial freedom accessible to everyone.</p>
+                <p className="mt-2 text-white/70">To simplify e-commerce and make online business success accessible to everyone.</p>
               </div>
             </div>
           </GlassCard>
@@ -97,7 +93,7 @@ export default function Home() {
               <IconBox>🌍</IconBox>
               <div>
                 <h3 className="text-2xl font-bold">Our Vision</h3>
-                <p className="mt-2 text-white/70">To build the world&apos;s most trusted trading education ecosystem.</p>
+                <p className="mt-2 text-white/70">To build the world&apos;s most trusted dropshipping education ecosystem.</p>
               </div>
             </div>
           </GlassCard>
@@ -107,12 +103,12 @@ export default function Home() {
       {/* Pre-Why CTA */}
       <RevealAnimation>
         <div className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 flex flex-col items-center gap-4 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold">Ready to start your journey?</h3>
-          <p className="text-white/70 max-w-2xl">Learn from industry experts, join live sessions, and become a consistent trader with WiFi Money.</p>
+          <h3 className="text-2xl md:text-3xl font-bold">Ready to start your dropshipping journey?</h3>
+          <p className="text-white/70 max-w-2xl">Learn from industry experts, join live sessions, and build a successful online store with our proven strategies.</p>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button onClick={() => openModal("Join WiFi Money")}>Join WiFi Money Now →</Button>
+            <Button onClick={() => openModal("Join Dropshipping Program")}>Start Your Store Now →</Button>
             <Link href="/courses">
-              <Button variant="glass">Explore Courses</Button>
+              <Button variant="glass">Explore Programs</Button>
             </Link>
           </div>
         </div>
@@ -121,16 +117,16 @@ export default function Home() {
       {/* Why WiFi Money */}
       <section className="space-y-8">
         <SectionHeading
-          title="Why Traders Choose WiFi Money"
+          title="Why Entrepreneurs Choose Our Program"
           subtitle="The competitive edge that sets us apart"
         />
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-5">
           {[
-            { icon: "💡", title: "Industry Experts", desc: "Learn from real traders, not theorists" },
-            { icon: "📈", title: "Real-Time Mentorship", desc: "Trade live with professionals" },
+            { icon: "💡", title: "Industry Experts", desc: "Learn from successful dropshippers, not theorists" },
+            { icon: "📦", title: "Product Research", desc: "Find winning products that actually sell" },
             { icon: "💬", title: "24/7 Support", desc: "Get answers when it matters most" },
             { icon: "🔒", title: "Lifetime Access", desc: "Once you join, you're family" },
-            { icon: "🎯", title: "Proven Results", desc: "70%+ students achieve profit consistency" },
+            { icon: "🎯", title: "Proven Results", desc: "70%+ students build profitable stores" },
           ].map((f) => (
             <RevealAnimation key={f.title}>
               <GlassCard className="p-6">
@@ -147,21 +143,10 @@ export default function Home() {
         </div>
         <div className="text-center">
           <AnimatedCounter target={70} suffix="%" className="text-5xl font-black gradient-text-gold" />
-          <p className="mt-2 text-sm text-white/60">Students achieve profit consistency</p>
+          <p className="mt-2 text-sm text-white/60">Students build profitable stores</p>
         </div>
       </section>
 
-      {/* Course Breakdown */}
-      <CourseBreakdown />
-
-      {/* Testimonials */}
-      <Testimonials />
-
-      {/* Join the Movement */}
-      <JoinMovement />
-
-      {/* Global Community */}
-      <GlobalCommunity />
 
       {/* Rewards / IB Program Section */}
       <section className="relative">
@@ -172,10 +157,10 @@ export default function Home() {
               <div className="inline-block text-5xl mb-2">💰</div>
               <h2 className="text-3xl md:text-5xl font-extrabold gradient-text-gold">Earn While You Learn</h2>
               <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                Join our IB program and earn rewards like <span className="text-[#C9A646] font-semibold">iPads, gadgets, or Dubai tours</span> based on your trading activity and referrals.
+                Join our affiliate program and earn rewards like <span className="text-[#C9A646] font-semibold">iPads, gadgets, or Dubai tours</span> based on your store success and referrals.
               </p>
               <div className="pt-2">
-                <Button className="text-lg px-8 py-4" onClick={() => openModal("Apply for IB Program")}>Apply Now →</Button>
+                <Button className="text-lg px-8 py-4" onClick={() => openModal("Apply for Affiliate Program")}>Apply Now →</Button>
               </div>
             </div>
           </div>
@@ -186,7 +171,7 @@ export default function Home() {
       <section className="space-y-8">
         <SectionHeading
           title="Upcoming Live Sessions"
-          subtitle="Join our weekly live trading sessions and learn from experts"
+          subtitle="Join our weekly live dropshipping sessions and learn from experts"
         />
         <RevealAnimation>
           <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-white/5 to-white/[0.02] p-8 md:p-10 backdrop-blur-xl">
@@ -197,7 +182,7 @@ export default function Home() {
                   <div className="inline-block px-3 py-1 rounded-full bg-[#C9A646]/20 text-[#C9A646] text-sm font-semibold mb-3">
                     Next Session
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-bold mb-4">Liquidity & Smart Money</h3>
+                  <h3 className="text-3xl md:text-4xl font-bold mb-4">Product Research & Store Setup</h3>
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 text-white/90">
@@ -243,12 +228,12 @@ export default function Home() {
                     <FileText className="text-black" size={24} />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-bold mb-1">Free Forex PDF Guide</h3>
+                    <h3 className="text-lg font-bold mb-1">Free Dropshipping PDF Guide</h3>
                     <p className="text-xs text-white/60">Beginner to Advanced</p>
                   </div>
                 </div>
                 <p className="text-sm text-white/70 mb-6 flex-1">
-                  Comprehensive guide covering everything from basics to advanced trading strategies.
+                  Comprehensive guide covering everything from store setup to scaling your dropshipping business.
                 </p>
                 <Link href="/contact" className="block">
                   <Button variant="outline" className="w-full mt-auto group-hover:bg-[#C9A646] group-hover:text-black group-hover:border-[#C9A646] transition-all">
@@ -267,12 +252,12 @@ export default function Home() {
                     <BarChart3 className="text-black" size={24} />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-bold mb-1">Daily Market Analysis</h3>
+                    <h3 className="text-lg font-bold mb-1">Daily Product Ideas</h3>
                     <p className="text-xs text-white/60">On Telegram</p>
                   </div>
                 </div>
                 <p className="text-sm text-white/70 mb-6 flex-1">
-                  Get daily insights, trade setups, and market analysis delivered directly to your Telegram.
+                  Get daily product recommendations, winning niches, and store optimization tips delivered directly to your Telegram.
                 </p>
                 <a href="https://t.me/wifimoneyai" target="_blank" rel="noopener noreferrer" className="block">
                   <Button variant="outline" className="w-full mt-auto group-hover:bg-[#C9A646] group-hover:text-black group-hover:border-[#C9A646] transition-all">
@@ -291,12 +276,12 @@ export default function Home() {
                     <VideoIcon className="text-black" size={24} />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-bold mb-1">MT5 Setup Tutorial</h3>
+                    <h3 className="text-lg font-bold mb-1">Shopify Store Setup</h3>
                     <p className="text-xs text-white/60">Step-by-step guide</p>
                   </div>
                 </div>
                 <p className="text-sm text-white/70 mb-6 flex-1">
-                  Learn how to set up MetaTrader 5 platform with our detailed video tutorial.
+                  Learn how to set up your Shopify store from scratch with our detailed video tutorial.
                 </p>
                 <Link href="/courses" className="block">
                   <Button variant="outline" className="w-full mt-auto group-hover:bg-[#C9A646] group-hover:text-black group-hover:border-[#C9A646] transition-all">
@@ -313,3 +298,4 @@ export default function Home() {
     </>
   );
 }
+

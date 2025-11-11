@@ -34,7 +34,7 @@ export default function VideoBackground({ src, poster, children, className }: Vi
   }, []);
 
   return (
-    <div className={`relative h-[calc(100vh-4rem)] w-full overflow-hidden ${className}`}>
+    <div className={`relative h-[calc(100vh-4rem)] min-h-[500px] sm:min-h-[600px] md:h-[calc(100vh-4rem)] w-full overflow-hidden ${className}`}>
       <video
         ref={videoRef}
         autoPlay
@@ -51,7 +51,7 @@ export default function VideoBackground({ src, poster, children, className }: Vi
       </video>
       <div className="absolute inset-0 bg-black/50" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black" />
-      <div className="relative z-10 h-full w-full">{children}</div>
+      <div className="relative z-10 h-full w-full flex items-center">{children}</div>
     </div>
   );
 }

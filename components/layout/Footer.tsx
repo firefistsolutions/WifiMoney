@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MessageCircle, Send, Instagram, Youtube } from "lucide-react";
 
 export default function Footer() {
@@ -6,7 +7,17 @@ export default function Footer() {
     <footer className="mt-20 border-t border-white/10 bg-black/70">
       <div className="mx-auto max-w-6xl px-4 py-10 grid grid-cols-1 gap-8 md:grid-cols-4">
         <div>
-          <div className="font-extrabold text-lg gradient-text-gold">WiFi Money</div>
+          <Link href="/" className="inline-block mb-2">
+            <div className="relative h-16 w-48">
+              <Image
+                src="/media/wifi-money-white-logo.png"
+                alt="WiFi Money"
+                fill
+                className="object-contain object-left"
+                sizes="192px"
+              />
+            </div>
+          </Link>
           <p className="mt-2 text-sm text-white/70">Learn. Trade. Earn.</p>
         </div>
 
@@ -16,7 +27,7 @@ export default function Footer() {
             <li><Link href="/">Home</Link></li>
             <li><Link href="/courses">Courses</Link></li>
             <li><Link href="/results">Results</Link></li>
-            <li><Link href="/about">About</Link></li>
+            <li><Link href="/faq">FAQ</Link></li>
             <li><Link href="/contact">Contact</Link></li>
           </ul>
         </div>
@@ -27,7 +38,7 @@ export default function Footer() {
             <li><a href="#">Beginner Guide</a></li>
             <li><a href="#">Trading Tools</a></li>
             <li><a href="#">Blog</a></li>
-            <li><a href="#">FAQs</a></li>
+            <li><Link href="/faq">FAQs</Link></li>
             <li><a href="#">Support</a></li>
           </ul>
         </div>

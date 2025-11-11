@@ -218,8 +218,8 @@ export default function CourseBreakdown() {
           <h3 className="text-3xl md:text-4xl font-extrabold gradient-text-gold">Compare Plans</h3>
           <p className="text-white/70 text-sm md:text-base">Choose the plan that fits your trading journey</p>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
+        <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
+          <table className="w-full border-collapse min-w-[600px] md:min-w-0">
             <thead>
               <tr className="border-b border-white/10">
                 <th className="text-left p-4 font-semibold">Plan</th>

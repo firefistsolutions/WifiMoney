@@ -5,6 +5,7 @@ import Button from "@/components/shared/Button";
 import placeholder from "@/utils/placeholders";
 import React, { useRef, useState } from "react";
 import { Play } from "lucide-react";
+import Link from "next/link";
 
 const TICKER_ITEMS = [
   "🔥 Vivek earned $420 this week",
@@ -142,12 +143,12 @@ export default function Testimonials() {
         <div className="relative">
           <button
             aria-label="Scroll left"
-            className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 hover:bg-white/20 p-3 transition-colors"
+            className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 hover:bg-white/20 p-2 md:p-3 transition-colors hidden md:block"
             onClick={() => scrollBy(-320)}
           >
             ◀
           </button>
-          <div ref={containerRef} className="hide-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto py-2 px-12">
+          <div ref={containerRef} className="hide-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto py-2 px-4 md:px-12">
             {TESTIMONIALS.map((t) => (
               <GlassCard key={`${t.name}-${t.city}`} className="min-w-[300px] snap-center p-6">
                 <div className="flex items-center gap-4 mb-4">
@@ -168,7 +169,7 @@ export default function Testimonials() {
           </div>
           <button
             aria-label="Scroll right"
-            className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 hover:bg-white/20 p-3 transition-colors"
+            className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 hover:bg-white/20 p-2 md:p-3 transition-colors hidden md:block"
             onClick={() => scrollBy(320)}
           >
             ▶
@@ -204,7 +205,9 @@ export default function Testimonials() {
 
         {/* See More Results Button */}
         <div className="text-center pt-4">
-          <Button>See More Results →</Button>
+          <Link href="/results">
+            <Button>See More Results →</Button>
+          </Link>
         </div>
       </section>
 

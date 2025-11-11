@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import Button from "@/components/shared/Button";
@@ -33,8 +34,17 @@ export default function Header() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
-        <Link href="/" className="font-extrabold tracking-wide gradient-text-gold">
-          WiFi Money
+        <Link href="/" className="flex items-center h-full">
+          <div className="relative h-10 w-32">
+            <Image
+              src="/media/wifi-money-white-logo.png"
+              alt="WiFi Money"
+              fill
+              className="object-contain object-left"
+              priority
+              sizes="128px"
+            />
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">

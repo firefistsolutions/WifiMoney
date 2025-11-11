@@ -53,11 +53,11 @@ export default function EnrollModal({ isOpen, onClose, title = "Get Started" }: 
             <X className="w-6 h-6" />
           </button>
 
-          <div className="text-center mb-6">
-            <h2 className="text-3xl font-extrabold gradient-text-gold mb-2">
+          <div className="text-center mb-6 px-4">
+            <h2 className="text-2xl md:text-3xl font-extrabold gradient-text-gold mb-2">
               {title}
             </h2>
-            <p className="text-white/70">
+            <p className="text-white/70 text-sm md:text-base">
               Fill out the form below and we&apos;ll get back to you soon!
             </p>
           </div>

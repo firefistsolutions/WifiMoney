@@ -41,15 +41,15 @@ export default function Lightbox({ proof, onClose }: LightboxProps) {
       onClick={onClose}
     >
       <div
-        className="relative max-w-6xl max-h-[90vh] w-full mx-4"
+        className="relative max-w-6xl max-h-[90vh] w-full mx-2 md:mx-4"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute -top-12 right-0 text-white hover:text-[#C9A646] transition-colors z-10"
+          className="absolute -top-10 md:-top-12 right-0 md:right-0 text-white hover:text-[#C9A646] transition-colors z-10 bg-black/50 rounded-full p-2"
           aria-label="Close lightbox"
         >
-          <X className="w-8 h-8" />
+          <X className="w-6 h-6 md:w-8 md:h-8" />
         </button>
 
         <div className="relative bg-black/50 rounded-lg overflow-hidden">
