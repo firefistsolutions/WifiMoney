@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import ConditionalLayout from "@/components/layout/ConditionalLayout";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import FloatingChat from "@/components/layout/FloatingChat";
 import { EnrollModalProvider } from "@/components/shared/EnrollModalProvider";
@@ -33,11 +32,11 @@ export default function RootLayout({
         <EnrollModalProvider>
           <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-black text-white px-3 py-2 rounded">Skip to main content</a>
           <ScrollProgress />
-          <Header />
-          <main id="main" className="mx-auto max-w-6xl px-4 ">
-          {children}
-          </main>
-          <Footer />
+          <ConditionalLayout>
+            <main id="main" className="mx-auto max-w-6xl px-4 ">
+              {children}
+            </main>
+          </ConditionalLayout>
           <FloatingChat />
         </EnrollModalProvider>
       </body>
