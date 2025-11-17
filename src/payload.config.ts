@@ -27,6 +27,11 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     user: Users.slug,
+    meta: {
+      titleSuffix: '- WiFi Money',
+      favicon: '/media/wifi-money-white-logo.png',
+      ogImage: '/media/wifi-money-white-logo.png',
+    },
   },
   collections: [Pages, Users],
   // We need to set CORS rules pointing to our hosted domains for the frontend to be able to submit to our API

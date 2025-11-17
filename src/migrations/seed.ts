@@ -14,8 +14,8 @@ export async function up({ payload }: MigrateUpArgs): Promise<void> {
   await payload.create({
     collection: 'users',
     data: {
-      email: 'demo@payloadcms.com',
-      password: 'demo',
+      email: 'demo@email.com',
+      password: 'admin@123',
     },
   })
 

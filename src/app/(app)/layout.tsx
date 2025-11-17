@@ -1,31 +1,50 @@
-import { ModalContainer, ModalProvider } from '@faceless-ui/modal'
-import React from 'react'
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import ConditionalLayout from "@/components/layout/ConditionalLayout";
+import ScrollProgress from "@/components/layout/ScrollProgress";
+import FloatingChat from "@/components/layout/FloatingChat";
+import { EnrollModalProvider } from "@/components/shared/EnrollModalProvider";
+import "../globals.css";
 
-import { CloseModalOnRouteChange } from '../../components/CloseModalOnRouteChange'
-import { Header } from '../../components/Header'
-import '../../css/app.scss'
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
 
-export const metadata = {
-  description: 'An example of how to authenticate with Payload from a Next.js app.',
-  title: 'Payload Auth + Next.js App Router Example',
-}
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
-export default function RootLayout(props: { children: React.ReactNode }) {
-  const { children } = props
+export const metadata: Metadata = {
+  title: "Wifi Money",
+  description: "Wifi Money is a platform for learning and trading.",
+  icons: {
+    icon: "/media/wifi-money-white-logo.png",
+    shortcut: "/media/wifi-money-white-logo.png",
+    apple: "/media/wifi-money-white-logo.png",
+  },
+};
 
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body>
-        <React.Fragment>
-          <ModalProvider classPrefix="form" transTime={0} zIndex="var(--modal-z-index)">
-            <CloseModalOnRouteChange />
-            <Header />
-            {/* <Component {...pageProps} /> */}
-            {children}
-            <ModalContainer />
-          </ModalProvider>
-        </React.Fragment>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white overflow-x-hidden`}>
+        <EnrollModalProvider>
+          <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-black text-white px-3 py-2 rounded">Skip to main content</a>
+          <ScrollProgress />
+          <ConditionalLayout>
+            <main id="main" className="mx-auto max-w-6xl px-4 ">
+              {children}
+            </main>
+          </ConditionalLayout>
+          <FloatingChat />
+        </EnrollModalProvider>
       </body>
     </html>
-  )
+  );
 }

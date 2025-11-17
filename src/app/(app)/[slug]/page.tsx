@@ -30,15 +30,15 @@ export default async function Page({ params: paramsPromise }: PageParams) {
     },
   })
 
-  const page = pageRes?.docs?.[0] as null | PageType
+  const page = pageRes?.docs?.[0] as null | undefined | PageType
 
-  if (page === null) {
+  if (!page || page === null || page === undefined) {
     return notFound()
   }
 
   return (
     <React.Fragment>
-      <Blocks blocks={page.layout} />
+      <Blocks blocks={page.layout || []} />
     </React.Fragment>
   )
 }
