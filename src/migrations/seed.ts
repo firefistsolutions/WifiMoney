@@ -1,4 +1,4 @@
-import type { MigrateUpArgs } from '@payloadcms/db-postgres'
+import type { MigrateUpArgs, MigrateDownArgs } from '@payloadcms/db-postgres'
 
 import { home } from '../seed/home'
 
@@ -167,4 +167,10 @@ export async function up({ payload }: MigrateUpArgs): Promise<void> {
       ],
     },
   })
+}
+
+export async function down({ payload }: MigrateDownArgs): Promise<void> {
+  // Seed migrations typically don't need a down function
+  // as seed data can be re-seeded by running migrate:fresh
+  // This is a no-op to satisfy the migration interface
 }
