@@ -17,7 +17,10 @@ export const Email: React.FC<
       }>
     >
     register: UseFormRegister<any & FieldValues>
-  } & EmailField
+  } & EmailField & {
+    placeholder?: string
+    defaultValue?: string
+  }
 > = ({ name, errors, label, register, required: requiredFromProps, width, placeholder, defaultValue }) => {
   const [isFocused, setIsFocused] = useState(false)
   const [value, setValue] = useState(defaultValue || '')

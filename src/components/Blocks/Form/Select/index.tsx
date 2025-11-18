@@ -94,7 +94,10 @@ export const Select: React.FC<
         [x: string]: any
       }>
     >
-  } & SelectField
+  } & SelectField & {
+    placeholder?: string
+    defaultValue?: string
+  }
 > = ({ name, control, errors, label, options, required, width, placeholder, defaultValue }) => {
   const [isFocused, setIsFocused] = useState(false)
   const [hasValue, setHasValue] = useState(false)
