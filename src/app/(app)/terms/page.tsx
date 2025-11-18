@@ -40,7 +40,7 @@ export default function TermsPage() {
             <RevealAnimation>
               <div className="space-y-6">
                 <p className="text-white/90 leading-relaxed">
-                  Welcome to WiFi-Money, a platform owned and operated by <strong>WiFi-Money</strong> ("we", "us", or "our"). These Terms & Conditions ("Terms") govern your access and use of our services, including our website, applications, Discord community, trading programs, mentorship sessions, and any other features provided under the WiFi-Money brand (collectively referred to as the "Platform").
+                  Welcome to WiFi-Money, a platform owned and operated by <strong>WiFi-Money</strong> (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). These Terms & Conditions (&quot;Terms&quot;) govern your access and use of our services, including our website, applications, Discord community, trading programs, mentorship sessions, and any other features provided under the WiFi-Money brand (collectively referred to as the &quot;Platform&quot;).
                 </p>
                 <p className="text-white/90 leading-relaxed">
                   By accessing or using any part of the Platform, you agree to be bound by these Terms. If you do not agree, please do not use our Platform.

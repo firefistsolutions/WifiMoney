@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { MessageCircle, Send, Instagram, Youtube } from "lucide-react";
 
 export default function DropShipFooter() {
@@ -65,8 +66,8 @@ export default function DropShipFooter() {
           <div className="text-xs text-white/60 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <span>© {new Date().getFullYear()} WiFi Money. All rights reserved.</span>
             <span className="space-x-3">
-              <a href="/privacy" className="hover:text-[#C9A646] transition-colors">Privacy Policy</a>
-              <a href="/terms" className="hover:text-[#C9A646] transition-colors">Terms</a>
+              <Link href="/privacy" className="hover:text-[#C9A646] transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-[#C9A646] transition-colors">Terms</Link>
               <span>Disclaimer</span>
             </span>
             <span>Made in Dubai</span>

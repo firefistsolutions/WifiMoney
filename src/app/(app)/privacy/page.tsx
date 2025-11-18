@@ -40,7 +40,7 @@ export default function PrivacyPage() {
             <RevealAnimation>
               <div className="space-y-6">
                 <p className="text-white/90 leading-relaxed">
-                  This Privacy Policy explains how WiFi-Money ("we", "us", or "our") collects, uses, shares, and protects your information when you access WiFi-Money — including our website, mobile applications, trading programs, webinars, mentorship, and all other services (collectively, the "Platform").
+                  This Privacy Policy explains how WiFi-Money (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collects, uses, shares, and protects your information when you access WiFi-Money — including our website, mobile applications, trading programs, webinars, mentorship, and all other services (collectively, the &quot;Platform&quot;).
                 </p>
                 <p className="text-white/90 leading-relaxed">
                   By using our Platform, you agree to the practices described in this policy.
@@ -195,7 +195,7 @@ export default function PrivacyPage() {
 
             <RevealAnimation delay={0.9}>
               <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-[#C9A646] mt-8 mb-4">9. Children's Privacy</h2>
+                <h2 className="text-2xl font-bold text-[#C9A646] mt-8 mb-4">9. Children&apos;s Privacy</h2>
                 <p className="text-white/90 leading-relaxed">
                   Our Platform is not intended for children under the age of 18. We do not knowingly collect data from minors.
                 </p>

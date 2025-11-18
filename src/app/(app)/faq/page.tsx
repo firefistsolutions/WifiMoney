@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import RevealAnimation from "@/components/shared/RevealAnimation";
 import SectionHeading from "@/components/shared/SectionHeading";
 import FAQAccordion from "@/components/faq/FAQAccordion";
@@ -106,12 +107,12 @@ export default function FAQPage() {
                 Our team is here to help you make the right decision. Reach out to us through our contact page or join our Telegram community.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a
+                <Link
                   href="/contact"
                   className="px-8 py-3 rounded-full bg-gradient-to-r from-[#C9A646] to-[#F4D03F] text-black font-semibold hover:shadow-[0_0_30px_rgba(201,166,70,0.5)] transition-all hover:scale-105"
                 >
                   Contact Us →
-                </a>
+                </Link>
                 <a
                   href="https://t.me/wifimoneyai"
                   target="_blank"
