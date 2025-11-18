@@ -107,6 +107,57 @@ export const FormBlock: React.FC<
           setIsLoading(false)
           setHasSubmitted(true)
 
+          // Send to Google Sheets if enabled (async, don't wait)
+          if (process.env.NEXT_PUBLIC_GOOGLE_SHEETS_ENABLED === 'true') {
+            const webhookUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL
+            if (webhookUrl) {
+              // Transform submission data
+              const flattenedData: Record<string, any> = {
+                id: res.id || res.doc?.id,
+                formId: formID,
+                submittedAt: new Date().toISOString(),
+              }
+              
+              // Flatten the submission data
+              dataToSend.forEach((item: { field: string; value: any }) => {
+                flattenedData[item.field] = item.value
+              })
+
+              // Send to Google Sheets (fire and forget)
+              fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(flattenedData),
+              }).catch((err) => {
+                console.error('Error sending to Google Sheets:', err)
+              })
+            } else {
+              // Use internal API route
+              const apiUrl = `${process.env.NEXT_PUBLIC_PAYLOAD_URL || 'http://localhost:3000'}/api/google-sheets/sync`
+              const flattenedData: Record<string, any> = {
+                id: res.id || res.doc?.id,
+                formId: formID,
+                submittedAt: new Date().toISOString(),
+              }
+              
+              dataToSend.forEach((item: { field: string; value: any }) => {
+                flattenedData[item.field] = item.value
+              })
+
+              fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(flattenedData),
+              }).catch((err) => {
+                console.error('Error sending to Google Sheets:', err)
+              })
+            }
+          }
+
           if (confirmationType === 'redirect' && redirect) {
             const { url } = redirect
 
@@ -129,21 +180,35 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <Gutter>
+    <div className="w-full">
       <div
-        className={[classes.form, hasSubmitted && classes.hasSubmitted].filter(Boolean).join(' ')}
+        className={`flex flex-col ${hasSubmitted ? 'items-center justify-center min-h-[400px]' : ''}`}
       >
         {enableIntro && introContent && !hasSubmitted && (
-          <RichText className={classes.intro} content={introContent} />
+          <div className="mb-6 prose prose-invert max-w-none">
+            <RichText content={introContent} />
+          </div>
         )}
         {!isLoading && hasSubmitted && confirmationType === 'message' && (
-          <RichText className={classes.confirmationMessage} content={confirmationMessage} />
+          <div className="text-center max-w-2xl mx-auto p-8 rounded-3xl border border-[#C9A646]/20 bg-gradient-to-br from-[#C9A646]/10 via-black to-black">
+            <RichText content={confirmationMessage} />
+          </div>
         )}
-        {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
-        {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
+        {isLoading && !hasSubmitted && (
+          <div className="flex items-center justify-center p-8">
+            <div className="text-white/60">Loading, please wait...</div>
+          </div>
+        )}
+        {error && (
+          <div className="p-4 mb-6 bg-red-500/10 border border-red-500/50 rounded-xl">
+            <p className="text-red-400">
+              {error.status || '500'}: {error.message || 'An error occurred'}
+            </p>
+          </div>
+        )}
         {!hasSubmitted && (
-          <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-            <div className={classes.fieldWrap}>
+          <form id={formID} onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="space-y-4">
               {formFromProps &&
                 formFromProps.fields &&
                 formFromProps.fields.map((field, index) => {
@@ -165,10 +230,16 @@ export const FormBlock: React.FC<
                   return null
                 })}
             </div>
-            <Button appearance="primary" el="button" form={formID} label={submitButtonLabel} />
+            <button
+              type="submit"
+              form={formID}
+              className="w-full px-8 py-4 rounded-full bg-gradient-to-r from-[#C9A646] to-[#F4D03F] text-black font-semibold hover:shadow-[0_0_30px_rgba(201,166,70,0.5)] transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            >
+              {submitButtonLabel || 'Submit'}
+            </button>
           </form>
         )}
       </div>
-    </Gutter>
+    </div>
   )
 }

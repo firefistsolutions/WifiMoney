@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { X } from "lucide-react";
-import ContactForm from "@/components/contact/ContactForm";
+import PayloadForm from "@/components/PayloadForm";
 
 type EnrollModalProps = {
   isOpen: boolean;
@@ -62,7 +62,7 @@ export default function EnrollModal({ isOpen, onClose, title = "Get Started" }: 
             </p>
           </div>
 
-          <ContactForm hideHeading />
+          <PayloadForm formId={2} enableIntro={false} />
         </div>
       </div>
     </div>

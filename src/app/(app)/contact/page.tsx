@@ -2,11 +2,14 @@
 
 import React from "react";
 import ContactHero from "@/components/contact/ContactHero";
-import ContactForm from "@/components/contact/ContactForm";
+import PayloadForm from "@/components/PayloadForm";
 import SocialLinks from "@/components/contact/SocialLinks";
 import MapSection from "@/components/contact/MapSection";
 
 export default function ContactPage() {
+  // Using Payload CMS Form ID: 2
+  const PAYLOAD_FORM_ID = 2;
+
   return (
     <div className="space-y-12">
       <ContactHero />
@@ -15,7 +18,7 @@ export default function ContactPage() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
         {/* Left Side - Contact Form (40%) */}
         <div className="lg:col-span-2">
-          <ContactForm />
+          <PayloadForm formId={PAYLOAD_FORM_ID} enableIntro={false} />
         </div>
 
         {/* Right Side - Social Links & Map (60%) */}
