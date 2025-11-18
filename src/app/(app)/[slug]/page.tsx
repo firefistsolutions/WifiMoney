@@ -7,6 +7,9 @@ import type { Page as PageType } from '../../../payload-types'
 
 import Blocks from '../../../components/Blocks'
 
+// Force dynamic rendering to avoid build-time database connection
+export const dynamic = 'force-dynamic'
+
 interface PageParams {
   params: Promise<{
     slug?: string
@@ -43,29 +46,3 @@ export default async function Page({ params: paramsPromise }: PageParams) {
   )
 }
 
-export async function generateStaticParams() {
-  try {
-    const payload = await getPayload({ config })
-    const pagesRes = await payload.find({
-      collection: 'pages',
-      draft: false,
-      limit: 100,
-      overrideAccess: false,
-    })
-
-    const pages = pagesRes?.docs
-
-    return pages.map(({ slug }) =>
-      slug !== 'home'
-        ? {
-            slug,
-          }
-        : {},
-    )
-  } catch (error) {
-    // If database connection fails during build, return empty array
-    // Pages will be generated on-demand
-    console.warn('Failed to generate static params, pages will be generated on-demand:', error)
-    return []
-  }
-}
