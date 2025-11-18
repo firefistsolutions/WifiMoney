@@ -1,4 +1,4 @@
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import {
   BoldFeature,
@@ -20,6 +20,10 @@ import { MainMenu } from './globals/MainMenu'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+// Determine SSL configuration for Supabase
+const databaseUri = process.env.DATABASE_URI || ''
+const isSupabase = databaseUri.includes('supabase') || databaseUri.includes('sslmode')
+
 // eslint-disable-next-line no-restricted-exports
 export default buildConfig({
   admin: {
@@ -34,8 +38,17 @@ export default buildConfig({
   collections: [Pages, Users],
   // We need to set CORS rules pointing to our hosted domains for the frontend to be able to submit to our API
   cors: [process.env.NEXT_PUBLIC_PAYLOAD_URL || ''],
-  db: mongooseAdapter({
-    url: process.env.DATABASE_URI || '',
+  db: postgresAdapter({
+    pool: isSupabase
+      ? {
+          connectionString: databaseUri,
+          ssl: {
+            rejectUnauthorized: false,
+          },
+        }
+      : {
+          connectionString: databaseUri,
+        },
   }),
   editor: lexicalEditor({
     features: () => {
