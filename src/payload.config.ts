@@ -29,8 +29,6 @@ export default buildConfig({
     user: Users.slug,
     meta: {
       titleSuffix: '- WiFi Money',
-      favicon: '/media/wifi-money-white-logo.png',
-      ogImage: '/media/wifi-money-white-logo.png',
     },
   },
   collections: [Pages, Users],
