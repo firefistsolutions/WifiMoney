@@ -44,21 +44,28 @@ export default async function Page({ params: paramsPromise }: PageParams) {
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config })
-  const pagesRes = await payload.find({
-    collection: 'pages',
-    draft: false,
-    limit: 100,
-    overrideAccess: false,
-  })
+  try {
+    const payload = await getPayload({ config })
+    const pagesRes = await payload.find({
+      collection: 'pages',
+      draft: false,
+      limit: 100,
+      overrideAccess: false,
+    })
 
-  const pages = pagesRes?.docs
+    const pages = pagesRes?.docs
 
-  return pages.map(({ slug }) =>
-    slug !== 'home'
-      ? {
-          slug,
-        }
-      : {},
-  )
+    return pages.map(({ slug }) =>
+      slug !== 'home'
+        ? {
+            slug,
+          }
+        : {},
+    )
+  } catch (error) {
+    // If database connection fails during build, return empty array
+    // Pages will be generated on-demand
+    console.warn('Failed to generate static params, pages will be generated on-demand:', error)
+    return []
+  }
 }
