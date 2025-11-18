@@ -41,7 +41,7 @@ export default function EnrollModal({ isOpen, onClose, title = "Get Started" }: 
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto hide-scrollbar"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative">

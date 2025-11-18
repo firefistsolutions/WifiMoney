@@ -180,7 +180,7 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-hidden">
       <div
         className={`flex flex-col ${hasSubmitted ? 'items-center justify-center min-h-[400px]' : ''}`}
       >
@@ -207,13 +207,23 @@ export const FormBlock: React.FC<
           </div>
         )}
         {!hasSubmitted && (
-          <form id={formID} onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div className="space-y-4">
+          <form id={formID} onSubmit={handleSubmit(onSubmit)}>
+            <div className="flex flex-wrap -mx-2">
               {formFromProps &&
                 formFromProps.fields &&
                 formFromProps.fields.map((field, index) => {
                   const Field: React.FC<any> = fields?.[field.blockType]
                   if (Field) {
+                    // Debug: Log field info in development
+                    if (process.env.NODE_ENV === 'development') {
+                      console.log(`Rendering field ${index + 1}:`, {
+                        name: field.name,
+                        label: field.label,
+                        blockType: field.blockType,
+                        width: field.width,
+                        options: field.blockType === 'select' ? field.options : undefined,
+                      })
+                    }
                     return (
                       <React.Fragment key={index}>
                         <Field
@@ -226,6 +236,11 @@ export const FormBlock: React.FC<
                         />
                       </React.Fragment>
                     )
+                  } else {
+                    // Debug: Log if field type is not found
+                    if (process.env.NODE_ENV === 'development') {
+                      console.warn(`Field type "${field.blockType}" not found for field:`, field.name || field.label)
+                    }
                   }
                   return null
                 })}

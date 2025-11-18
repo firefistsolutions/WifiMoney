@@ -21,8 +21,8 @@ const getSelectStyles = (hasValue: boolean, isFocused: boolean) => ({
       ? '#C9A646' 
       : 'rgba(255, 255, 255, 0.1)',
     borderRadius: '12px',
-    padding: hasValue || isFocused ? '20px 40px 8px 16px' : '8px 40px 8px 16px',
-    minHeight: hasValue || isFocused ? '64px' : '56px',
+    padding: hasValue || isFocused ? '24px 40px 12px 16px' : '28px 40px 12px 16px',
+    minHeight: hasValue || isFocused ? '72px' : '72px',
     boxShadow: state.isFocused ? '0 0 20px rgba(201, 166, 70, 0.3)' : 'none',
     borderWidth: '1px',
     '&:hover': {
@@ -32,21 +32,24 @@ const getSelectStyles = (hasValue: boolean, isFocused: boolean) => ({
   placeholder: (base: any) => ({
     ...base,
     color: 'rgba(255, 255, 255, 0.4)',
-    marginTop: hasValue || isFocused ? '4px' : '0',
+    marginTop: hasValue || isFocused ? '0' : '8px',
+    paddingTop: '0',
   }),
   singleValue: (base: any) => ({
     ...base,
     color: '#ffffff',
-    marginTop: hasValue || isFocused ? '4px' : '0',
+    marginTop: hasValue || isFocused ? '0' : '8px',
+    paddingTop: '0',
   }),
   input: (base: any) => ({
     ...base,
     color: '#ffffff',
-    marginTop: hasValue || isFocused ? '4px' : '0',
+    marginTop: hasValue || isFocused ? '0' : '8px',
+    paddingTop: '0',
   }),
   valueContainer: (base: any) => ({
     ...base,
-    paddingTop: hasValue || isFocused ? '4px' : '0',
+    paddingTop: hasValue || isFocused ? '0' : '8px',
     paddingBottom: '0',
   }),
   menu: (base: any) => ({
@@ -97,22 +100,36 @@ export const Select: React.FC<
   const [hasValue, setHasValue] = useState(false)
   const hasError = required && errors[name]
 
+  // Ensure options is an array
+  const selectOptions = options && Array.isArray(options) && options.length > 0 
+    ? options 
+    : [{ value: '', label: 'No options available' }]
+
+  // If no options provided, show a warning but still render the field
+  if (!options || !Array.isArray(options) || options.length === 0) {
+    console.warn(`Select field "${label || name}" has no options configured. Please add options in Payload CMS.`)
+  }
+
   return (
     <Width width={width}>
-      <div className="relative mb-6">
+      <div className="relative mb-6 w-full">
         <div className="relative">
           <Controller
             control={control}
             defaultValue={defaultValue || ''}
             name={name}
             render={({ field: { onChange, value } }) => {
-              const currentValue = options?.find((s) => s.value === value)
-              const valueExists = !!currentValue
+              const currentValue = selectOptions.find((s) => s.value === value)
+              const valueExists = !!currentValue && currentValue.value !== ''
               if (valueExists && !hasValue) setHasValue(true)
               if (!valueExists && hasValue) setHasValue(false)
               
               return (
-                <div onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)}>
+                <div 
+                  className="relative z-0"
+                  onFocus={() => setIsFocused(true)} 
+                  onBlur={() => setIsFocused(false)}
+                >
                   <ReactSelect
                     className="react-select-container"
                     classNamePrefix="rs"
@@ -125,11 +142,13 @@ export const Select: React.FC<
                     }}
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
-                    options={options}
+                    options={selectOptions}
                     value={currentValue || null}
-                    placeholder={!valueExists && !isFocused ? (placeholder || label) : ''}
+                    placeholder={!valueExists && !isFocused ? (placeholder || label || 'Select an option') : ''}
                     styles={getSelectStyles(valueExists, isFocused)}
                     isSearchable={false}
+                    menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+                    menuPosition="fixed"
                   />
                 </div>
               )
@@ -139,17 +158,17 @@ export const Select: React.FC<
           
           <label
             htmlFor={name}
-            className={`absolute left-4 transition-all duration-300 pointer-events-none z-10 ${
+            className={`absolute left-4 transition-all duration-300 pointer-events-none z-20 ${
               isFocused || hasValue
                 ? 'top-2 text-xs text-[#C9A646]'
-                : 'top-4 text-base text-white/60'
+                : 'top-5 text-base text-white/60'
             }`}
           >
-            {label}
+            {label || 'Select'}
             {required && <span className="text-red-500 ml-1">*</span>}
           </label>
 
-          <div className="absolute right-12 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none">
+          <div className="absolute right-12 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none z-10">
             <MessageSquare size={20} />
           </div>
         </div>

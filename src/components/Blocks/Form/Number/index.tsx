@@ -4,7 +4,7 @@ import type { TextField } from '@payloadcms/plugin-form-builder/types'
 import type { FieldErrorsImpl, FieldValues, UseFormRegister } from 'react-hook-form'
 
 import React, { useState } from 'react'
-import { Hash } from 'lucide-react'
+import { Phone } from 'lucide-react'
 
 import { Error } from '../Error'
 import { Width } from '../Width'
@@ -32,7 +32,7 @@ export const Number: React.FC<
           <input
             id={name}
             type="number"
-            className={`w-full px-4 pt-6 pb-2 bg-white/5 border rounded-xl backdrop-blur-xl transition-all duration-300 text-white placeholder-transparent focus:outline-none ${
+            className={`w-full px-4 pt-6 pb-2 bg-white/5 border rounded-xl backdrop-blur-xl transition-all duration-300 text-white placeholder-transparent focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
               hasError
                 ? 'border-red-500/50 focus:border-red-500'
                 : isFocused || hasValue
@@ -61,7 +61,7 @@ export const Number: React.FC<
           </label>
 
           <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40">
-            <Hash size={20} />
+            <Phone size={20} />
           </div>
         </div>
         {hasError && (
