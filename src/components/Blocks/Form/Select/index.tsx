@@ -6,7 +6,6 @@ import type { Control, FieldErrorsImpl, FieldValues } from 'react-hook-form'
 import React, { useState } from 'react'
 import { Controller } from 'react-hook-form'
 import ReactSelect from 'react-select'
-import { MessageSquare } from 'lucide-react'
 
 import { Error } from '../Error'
 import { Width } from '../Width'
@@ -25,9 +24,6 @@ const getSelectStyles = (hasValue: boolean, isFocused: boolean) => ({
     minHeight: hasValue || isFocused ? '72px' : '72px',
     boxShadow: state.isFocused ? '0 0 20px rgba(201, 166, 70, 0.3)' : 'none',
     borderWidth: '1px',
-    '&:hover': {
-      borderColor: '#C9A646',
-    },
   }),
   placeholder: (base: any) => ({
     ...base,
@@ -59,6 +55,7 @@ const getSelectStyles = (hasValue: boolean, isFocused: boolean) => ({
     border: '1px solid rgba(255, 255, 255, 0.1)',
     borderRadius: '12px',
     overflow: 'hidden',
+    zIndex: 9999, // Ensure menu appears above other elements
   }),
   option: (base: any, state: any) => ({
     ...base,
@@ -80,9 +77,6 @@ const getSelectStyles = (hasValue: boolean, isFocused: boolean) => ({
   dropdownIndicator: (base: any) => ({
     ...base,
     color: 'rgba(255, 255, 255, 0.4)',
-    '&:hover': {
-      color: '#C9A646',
-    },
   }),
 })
 
@@ -152,6 +146,9 @@ export const Select: React.FC<
                     isSearchable={false}
                     menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
                     menuPosition="fixed"
+                    menuShouldScrollIntoView={true}
+                    menuPlacement="auto"
+                    openMenuOnFocus={true}
                   />
                 </div>
               )
@@ -170,10 +167,6 @@ export const Select: React.FC<
             {label || 'Select'}
             {required && <span className="text-red-500 ml-1">*</span>}
           </label>
-
-          <div className="absolute right-12 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none z-10">
-            <MessageSquare size={20} />
-          </div>
         </div>
         {hasError && (
           <p className="mt-2 text-sm text-red-400" role="alert">

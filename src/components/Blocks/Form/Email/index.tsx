@@ -37,10 +37,10 @@ export const Email: React.FC<
             type="email"
             className={`w-full px-4 pt-6 pb-2 bg-white/5 border rounded-xl backdrop-blur-xl transition-all duration-300 text-white placeholder-transparent focus:outline-none ${
               hasError
-                ? 'border-red-500/50 focus:border-red-500'
+                ? 'border-red-500/50 focus:border-red-500 hover:border-red-500/50'
                 : isFocused || hasValue
-                ? 'border-[#C9A646] focus:border-[#F4D03F] focus:shadow-[0_0_20px_rgba(201,166,70,0.3)]'
-                : 'border-white/10 focus:border-[#C9A646]'
+                ? 'border-[#C9A646] focus:border-[#F4D03F] focus:shadow-[0_0_20px_rgba(201,166,70,0.3)] hover:border-[#C9A646]'
+                : 'border-white/10 focus:border-[#C9A646] hover:border-white/10'
             }`}
             placeholder={placeholder || label || 'Email'}
             {...register(name, { 

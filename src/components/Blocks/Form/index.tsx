@@ -210,7 +210,7 @@ export const FormBlock: React.FC<
             <button
               type="submit"
               form={formID}
-              className="w-full px-8 py-4 rounded-full bg-gradient-to-r from-[#C9A646] to-[#F4D03F] text-black font-semibold hover:shadow-[0_0_30px_rgba(201,166,70,0.5)] transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full px-8 py-4 rounded-full bg-gradient-to-r from-[#C9A646] to-[#F4D03F] text-black font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {submitButtonLabel || 'Submit'}
             </button>

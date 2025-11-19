@@ -242,7 +242,7 @@ export default function PayloadForm({
   }
 
   return (
-    <GlassCard className={`p-8 ${className || ''}`}>
+    <GlassCard noHover className={`p-8 ${className || ''}`}>
       <FormBlock
         form={form}
         enableIntro={enableIntro}
