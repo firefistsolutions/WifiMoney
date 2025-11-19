@@ -8,9 +8,7 @@ export const buildInitialFormState = (fields: FormFieldBlock[]) => {
     }
 
     // Use string comparison to handle all block types, including 'number' which may not be in the type union
-    // Cast to any first, then to string to bypass TypeScript's strict type checking
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const blockType: string = String((field as any).blockType)
+    const blockType: string = String(field.blockType)
 
     if (blockType === 'checkbox') {
       return {
