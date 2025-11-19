@@ -37,7 +37,10 @@ export default buildConfig({
   },
   collections: [Pages, Users],
   // We need to set CORS rules pointing to our hosted domains for the frontend to be able to submit to our API
-  cors: [process.env.NEXT_PUBLIC_PAYLOAD_URL || ''],
+  // In development, allow localhost; in production, use the actual domain
+  cors: process.env.NODE_ENV === 'development' 
+    ? ['http://localhost:3000', process.env.NEXT_PUBLIC_PAYLOAD_URL || ''].filter(Boolean)
+    : [process.env.NEXT_PUBLIC_PAYLOAD_URL || ''].filter(Boolean),
   db: postgresAdapter({
     pool: isSupabase
       ? {

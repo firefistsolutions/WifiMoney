@@ -44,8 +44,16 @@ export const FormBlock: React.FC<
     introContent,
   } = props
 
+  // Build initial form state with error handling
+  let initialFormState = {}
+  try {
+    initialFormState = buildInitialFormState(formFromProps.fields || [])
+  } catch (error) {
+    console.error('Error building initial form state:', error)
+  }
+
   const formMethods = useForm({
-    defaultValues: buildInitialFormState(formFromProps.fields),
+    defaultValues: initialFormState,
   })
   const {
     control,
@@ -217,11 +225,11 @@ export const FormBlock: React.FC<
                     // Debug: Log field info in development
                     if (process.env.NODE_ENV === 'development') {
                       console.log(`Rendering field ${index + 1}:`, {
-                        name: field.name,
-                        label: field.label,
+                        name: 'name' in field ? field.name : undefined,
+                        label: 'label' in field ? field.label : undefined,
                         blockType: field.blockType,
-                        width: field.width,
-                        options: field.blockType === 'select' ? field.options : undefined,
+                        width: 'width' in field ? field.width : undefined,
+                        options: field.blockType === 'select' && 'options' in field ? field.options : undefined,
                       })
                     }
                     return (
@@ -239,7 +247,8 @@ export const FormBlock: React.FC<
                   } else {
                     // Debug: Log if field type is not found
                     if (process.env.NODE_ENV === 'development') {
-                      console.warn(`Field type "${field.blockType}" not found for field:`, field.name || field.label)
+                      const fieldName = 'name' in field ? field.name : 'label' in field ? field.label : 'unknown'
+                      console.warn(`Field type "${field.blockType}" not found for field:`, fieldName)
                     }
                   }
                   return null
