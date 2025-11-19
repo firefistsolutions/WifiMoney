@@ -89,15 +89,31 @@ export default function PayloadForm({
         if (!response.ok) {
           const errorText = await response.text()
           let errorMessage = `Failed to fetch form: ${response.status} ${response.statusText}`
+          let errorDetails: any = null
+          
           try {
             if (errorText && errorText.trim()) {
               const errorData = JSON.parse(errorText)
-              errorMessage = errorData.message || errorData.errors?.[0]?.message || errorMessage
+              errorMessage = errorData.message || errorData.error || errorData.errors?.[0]?.message || errorMessage
+              errorDetails = errorData
             }
           } catch {
             // If not JSON, use the text or default message
             if (errorText) errorMessage = errorText
           }
+          
+          // Log detailed error in development
+          if (process.env.NODE_ENV === 'development') {
+            console.error('Form fetch error:', {
+              status: response.status,
+              statusText: response.statusText,
+              errorMessage,
+              errorDetails,
+              apiUrl,
+              formId,
+            })
+          }
+          
           throw new Error(errorMessage)
         }
 

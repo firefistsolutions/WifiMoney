@@ -16,6 +16,7 @@ import { fileURLToPath } from 'url'
 import { Pages } from './collections/Pages'
 import { Users } from './collections/Users'
 import { MainMenu } from './globals/MainMenu'
+import { formSubmissionsToSheets } from './hooks/formSubmissionsToSheets'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -103,6 +104,61 @@ export default buildConfig({
       },
     }),
   ],
+  onInit: async (payload) => {
+    console.log('🚀 [Payload Config] onInit called - attaching hooks...')
+    console.log('🔍 [Payload Config] Available collections:', Object.keys(payload.collections))
+    
+    // Attach Google Sheets hook to form-submissions collection
+    const formSubmissionsCollection = payload.collections['form-submissions']
+    
+    console.log('🔍 [Payload Config] Checking form-submissions collection:', {
+      exists: !!formSubmissionsCollection,
+      collectionName: formSubmissionsCollection?.config?.slug,
+      hasHooks: !!formSubmissionsCollection?.config?.hooks,
+      existingHooks: formSubmissionsCollection?.config?.hooks ? Object.keys(formSubmissionsCollection.config.hooks) : [],
+    })
+    
+    if (formSubmissionsCollection) {
+      const originalHooks = formSubmissionsCollection.config.hooks || {}
+      const existingAfterChange = originalHooks.afterChange || []
+      
+      console.log('📝 [Payload Config] Current hooks:', {
+        hasAfterChange: !!originalHooks.afterChange,
+        afterChangeCount: existingAfterChange.length,
+        allHookKeys: Object.keys(originalHooks),
+      })
+      
+      formSubmissionsCollection.config.hooks = {
+        ...originalHooks,
+        afterChange: [
+          ...existingAfterChange,
+          formSubmissionsToSheets,
+        ],
+      }
+      
+      console.log('✅ [Payload Config] Google Sheets hook attached successfully!', {
+        totalAfterChangeHooks: formSubmissionsCollection.config.hooks.afterChange?.length || 0,
+        hookFunction: typeof formSubmissionsToSheets,
+      })
+      
+      // Verify the hook was added
+      const verifyHooks = formSubmissionsCollection.config.hooks.afterChange || []
+      console.log('🔍 [Payload Config] Verification - afterChange hooks count:', verifyHooks.length)
+      
+      if (process.env.NODE_ENV === 'development') {
+        console.log('✅ [Payload Config] Google Sheets hook attached to form-submissions collection')
+      }
+    } else {
+      console.error('❌ [Payload Config] form-submissions collection not found!', {
+        availableCollections: Object.keys(payload.collections),
+      })
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('⚠️ form-submissions collection not found - Google Sheets hook not attached')
+      }
+    }
+    
+    console.log('🏁 [Payload Config] onInit completed')
+  },
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

@@ -116,56 +116,8 @@ export const FormBlock: React.FC<
           setIsLoading(false)
           setHasSubmitted(true)
 
-          // Send to Google Sheets if enabled (async, don't wait)
-          if (process.env.NEXT_PUBLIC_GOOGLE_SHEETS_ENABLED === 'true') {
-            const webhookUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL
-            if (webhookUrl) {
-              // Transform submission data
-              const flattenedData: Record<string, any> = {
-                id: res.id || res.doc?.id,
-                formId: formID,
-                submittedAt: new Date().toISOString(),
-              }
-              
-              // Flatten the submission data
-              dataToSend.forEach((item: { field: string; value: any }) => {
-                flattenedData[item.field] = item.value
-              })
-
-              // Send to Google Sheets (fire and forget)
-              fetch(webhookUrl, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(flattenedData),
-              }).catch((err) => {
-                console.error('Error sending to Google Sheets:', err)
-              })
-            } else {
-              // Use internal API route
-              const apiUrl = `${process.env.NEXT_PUBLIC_PAYLOAD_URL || 'http://localhost:3000'}/api/google-sheets/sync`
-              const flattenedData: Record<string, any> = {
-                id: res.id || res.doc?.id,
-                formId: formID,
-                submittedAt: new Date().toISOString(),
-              }
-              
-              dataToSend.forEach((item: { field: string; value: any }) => {
-                flattenedData[item.field] = item.value
-              })
-
-              fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(flattenedData),
-              }).catch((err) => {
-                console.error('Error sending to Google Sheets:', err)
-              })
-            }
-          }
+          // Note: Google Sheets integration is handled server-side via the formSubmissionsToSheets hook
+          // This ensures it doesn't interfere with form submission and handles errors gracefully
 
           if (confirmationType === 'redirect' && redirect) {
             const { url } = redirect
