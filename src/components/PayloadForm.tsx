@@ -45,7 +45,8 @@ export default function PayloadForm({
         
         // Always use relative URL for same-origin requests (more reliable)
         // Reduce depth to 1 to speed up the query (depth=2 might be causing slowness)
-        const apiUrl = `/api/forms/${formId}?depth=1&draft=false&locale=undefined&trash=false`
+        // Remove locale=undefined as it causes 500 errors in production
+        const apiUrl = `/api/forms/${formId}?depth=1&draft=false`
         
         if (process.env.NODE_ENV === 'development') {
           console.log('Fetching form from:', apiUrl)
