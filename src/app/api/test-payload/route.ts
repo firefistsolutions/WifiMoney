@@ -50,7 +50,7 @@ export async function GET() {
   } catch (error) {
     console.error('Payload CMS test error:', error)
     
-    const errorDetails = {
+    const errorDetails: Record<string, any> = {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
       errorType: error instanceof Error ? error.constructor.name : typeof error,
