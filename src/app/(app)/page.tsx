@@ -16,9 +16,11 @@ import { Calendar, FileText, BarChart3, Video as VideoIcon } from "lucide-react"
 import { useEnrollModal } from "@/components/shared/EnrollModalProvider";
 import Link from "next/link";
 import Image from "next/image";
+import { getNextSession } from "@/utils/getNextSession";
 
 export default function Home() {
   const { openModal } = useEnrollModal();
+  const nextSession = getNextSession();
   
   return (
     <>
@@ -172,7 +174,7 @@ export default function Home() {
               <div className="inline-block text-5xl mb-2">💰</div>
               <h2 className="text-3xl md:text-5xl font-extrabold gradient-text-gold">Earn While You Learn</h2>
               <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                Join our IB program and earn rewards like <span className="text-[#C9A646] font-semibold">iPads, gadgets, or Dubai tours</span> based on your trading activity and referrals.
+                Join our Referral Programand earn rewards like <span className="text-[#C9A646] font-semibold">iPads, gadgets, or Dubai tours</span> based on your trading activity and referrals.
               </p>
               <div className="pt-2">
                 <Button className="text-lg px-8 py-4" onClick={() => openModal("Apply for IB Program")}>Apply Now →</Button>
@@ -206,7 +208,7 @@ export default function Home() {
                     </div>
                     <div>
                       <div className="text-xs text-white/60">Date & Time</div>
-                      <div className="font-semibold">9th Nov, 7:00 PM (IST)</div>
+                      <div className="font-semibold">{nextSession.formattedDate}, {nextSession.formattedTime}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 text-white/90">

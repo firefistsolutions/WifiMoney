@@ -13,8 +13,11 @@ import { useEnrollModal } from "@/components/shared/EnrollModalProvider";
 import Link from "next/link";
 import Image from "next/image";
 
+import { getNextSession } from "@/utils/getNextSession";
+
 export default function DropShip() {
   const { openModal } = useEnrollModal();
+  const nextSession = getNextSession();
   
   return (
     <>
@@ -191,7 +194,7 @@ export default function DropShip() {
                     </div>
                     <div>
                       <div className="text-xs text-white/60">Date & Time</div>
-                      <div className="font-semibold">9th Nov, 7:00 PM (IST)</div>
+                      <div className="font-semibold">{nextSession.formattedDate}, {nextSession.formattedTime}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 text-white/90">
