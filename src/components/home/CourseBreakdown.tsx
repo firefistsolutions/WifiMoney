@@ -136,18 +136,6 @@ function CourseModal({ course, onClose }: CourseModalProps) {
           </ul>
         </div>
 
-        <div className="flex items-center gap-4 mb-6 p-4 rounded-xl bg-white/5 border border-white/10">
-          <img
-            src={placeholder("founder", course.trainerImg, "auto=format&fit=crop&w=80&h=80&q=80")}
-            alt={course.trainerName}
-            className="w-16 h-16 rounded-full object-cover"
-          />
-          <div>
-            <div className="text-sm text-white/70">Trainer</div>
-            <div className="font-semibold">{course.trainerName}</div>
-          </div>
-        </div>
-
         <Button className="w-full" onClick={() => { onClose(); openModal(`Join Next Batch - ${course.title}`); }}>Join Next Batch →</Button>
       </div>
     </div>
