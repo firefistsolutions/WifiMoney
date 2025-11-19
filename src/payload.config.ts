@@ -24,6 +24,16 @@ const dirname = path.dirname(filename)
 const databaseUri = process.env.DATABASE_URI || ''
 const isSupabase = databaseUri.includes('supabase') || databaseUri.includes('sslmode')
 
+// Validate required environment variables in production
+if (process.env.NODE_ENV === 'production') {
+  if (!process.env.PAYLOAD_SECRET) {
+    throw new Error('PAYLOAD_SECRET environment variable is required in production')
+  }
+  if (!databaseUri) {
+    throw new Error('DATABASE_URI environment variable is required in production')
+  }
+}
+
 // eslint-disable-next-line no-restricted-exports
 export default buildConfig({
   admin: {
