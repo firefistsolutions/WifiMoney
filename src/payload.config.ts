@@ -24,14 +24,26 @@ const dirname = path.dirname(filename)
 const databaseUri = process.env.DATABASE_URI || ''
 const isSupabase = databaseUri.includes('supabase') || databaseUri.includes('sslmode')
 
-// Validate required environment variables in production
-if (process.env.NODE_ENV === 'production') {
+// Validate required environment variables
+// Note: We check at runtime, not at config load time, to provide better error messages
+const validateEnv = () => {
   if (!process.env.PAYLOAD_SECRET) {
-    throw new Error('PAYLOAD_SECRET environment variable is required in production')
+    console.error('❌ PAYLOAD_SECRET is missing!')
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('PAYLOAD_SECRET environment variable is required')
+    }
   }
   if (!databaseUri) {
-    throw new Error('DATABASE_URI environment variable is required in production')
+    console.error('❌ DATABASE_URI is missing!')
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('DATABASE_URI environment variable is required')
+    }
   }
+}
+
+// Only validate in production to avoid breaking dev
+if (process.env.NODE_ENV === 'production') {
+  validateEnv()
 }
 
 // eslint-disable-next-line no-restricted-exports
@@ -50,7 +62,9 @@ export default buildConfig({
   // In development, allow localhost; in production, use the actual domain
   cors: process.env.NODE_ENV === 'development' 
     ? ['http://localhost:3000', process.env.NEXT_PUBLIC_PAYLOAD_URL || ''].filter(Boolean)
-    : [process.env.NEXT_PUBLIC_PAYLOAD_URL || ''].filter(Boolean),
+    : [
+        process.env.NEXT_PUBLIC_PAYLOAD_URL || '',
+      ].filter(Boolean),
   db: postgresAdapter({
     pool: isSupabase
       ? {

@@ -86,7 +86,8 @@ export const FormBlock: React.FC<
         }, 1000)
 
         try {
-          const req = await fetch(`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/form-submissions`, {
+          // Use relative URL for same-origin requests (more reliable in production)
+          const req = await fetch('/api/form-submissions', {
             body: JSON.stringify({
               form: formID,
               submissionData: dataToSend,
