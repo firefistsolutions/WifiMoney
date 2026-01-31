@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle, Send, Instagram, Youtube } from "lucide-react";
+import { Send } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -46,17 +46,8 @@ export default function Footer() {
         <div>
           <div className="font-semibold mb-3">Connect</div>
           <div className="flex items-center gap-3">
-            <a href="#" aria-label="WhatsApp" className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition">
-              <MessageCircle className="text-white" size={20} strokeWidth={1.8} />
-            </a>
             <a href="https://t.me/wifimoneyai" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition">
               <Send className="text-white" size={20} strokeWidth={1.8} />
-            </a>
-            <a href="#" aria-label="Instagram" className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition">
-              <Instagram className="text-white" size={20} strokeWidth={1.8} />
-            </a>
-            <a href="#" aria-label="YouTube" className="group inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition">
-              <Youtube className="text-white" size={20} strokeWidth={1.8} />
             </a>
           </div>
         </div>
