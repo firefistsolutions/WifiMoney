@@ -3,14 +3,11 @@
 import React from "react";
 import GlassCard from "@/components/shared/GlassCard";
 import Button from "@/components/shared/Button";
-import { MessageCircle, Send, Instagram, Youtube, QrCode, Clock } from "lucide-react";
+import { Send, QrCode, Clock } from "lucide-react";
 import Image from "next/image";
 
 export default function SocialLinks() {
-  const whatsappLink = "https://wa.me/1234567890";
   const telegramLink = "https://t.me/wifimoneyai";
-  const instagramLink = "https://instagram.com/yourusername";
-  const youtubeLink = "https://youtube.com/@yourusername";
 
   return (
     <div className="space-y-6">
@@ -30,23 +27,8 @@ export default function SocialLinks() {
         </div>
       </GlassCard>
 
-      {/* Quick Connect Buttons */}
+      {/* Quick Connect - Telegram */}
       <div className="space-y-3">
-        <a
-          href={whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-        >
-          <Button
-            variant="glass"
-            className="w-full justify-start gap-3 bg-[#25D366]/10 hover:bg-[#25D366]/20 border-[#25D366]/30"
-          >
-            <MessageCircle size={20} />
-            <span>Chat with us instantly</span>
-          </Button>
-        </a>
-
         <a
           href={telegramLink}
           target="_blank"
@@ -59,36 +41,6 @@ export default function SocialLinks() {
           >
             <Send size={20} />
             <span>Join the community</span>
-          </Button>
-        </a>
-
-        <a
-          href={instagramLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-        >
-          <Button
-            variant="glass"
-            className="w-full justify-start gap-3"
-          >
-            <Instagram size={20} />
-            <span>Follow our journey</span>
-          </Button>
-        </a>
-
-        <a
-          href={youtubeLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-        >
-          <Button
-            variant="glass"
-            className="w-full justify-start gap-3"
-          >
-            <Youtube size={20} />
-            <span>Watch free content</span>
           </Button>
         </a>
       </div>

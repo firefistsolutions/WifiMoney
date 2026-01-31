@@ -12,7 +12,6 @@ type ProofGridProps = {
 
 const CATEGORIES = [
   { id: "profit", label: "Profit Screenshots", description: "Real trading results from our community" },
-  { id: "testimonial", label: "Video Testimonials", description: "Hear directly from successful traders" },
   { id: "community", label: "Community Highlights", description: "See our active trading community in action" },
   { id: "transformation", label: "Success Stories", description: "Journeys from beginner to consistent trader" },
 ];

@@ -21,13 +21,6 @@ const PROOF_DATA: ProofCardData[] = [
     category: "profit",
   },
   {
-    id: "2",
-    type: "video",
-    src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    title: "Success Story: From Zero to Consistent",
-    category: "testimonial",
-  },
-  {
     id: "3",
     type: "image",
     src: "#",
@@ -53,13 +46,6 @@ const PROOF_DATA: ProofCardData[] = [
     date: "Nov 2024",
     traderName: "Ahmed A.",
     category: "profit",
-  },
-  {
-    id: "6",
-    type: "video",
-    src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    title: "Live Trading Session Highlights",
-    category: "testimonial",
   },
   {
     id: "7",

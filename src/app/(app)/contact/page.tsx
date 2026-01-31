@@ -4,7 +4,6 @@ import React from "react";
 import ContactHero from "@/components/contact/ContactHero";
 import PayloadForm from "@/components/PayloadForm";
 import SocialLinks from "@/components/contact/SocialLinks";
-import MapSection from "@/components/contact/MapSection";
 
 export default function ContactPage() {
   // Using Payload CMS Form ID: 2
@@ -21,10 +20,9 @@ export default function ContactPage() {
           <PayloadForm formId={PAYLOAD_FORM_ID} enableIntro={false} />
         </div>
 
-        {/* Right Side - Social Links & Map (60%) */}
+        {/* Right Side - Social Links (60%) */}
         <div className="lg:col-span-3 space-y-8">
           <SocialLinks />
-          <MapSection />
         </div>
       </div>
     </div>

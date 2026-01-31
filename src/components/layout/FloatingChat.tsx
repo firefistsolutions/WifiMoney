@@ -6,8 +6,6 @@ import { MessageCircle, Send, X } from "lucide-react";
 export default function FloatingChat() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Replace with your actual WhatsApp and Telegram links
-  const whatsappLink = "https://wa.me/1234567890"; // Replace with your WhatsApp number
   const telegramLink = "https://t.me/wifimoneyai";
 
   return (
@@ -15,16 +13,6 @@ export default function FloatingChat() {
       {/* Chat Options Menu */}
       {isOpen && (
         <div className="absolute bottom-16 right-0 mb-2 space-y-2 animate-fade-in-up">
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 bg-[#25D366] hover:bg-[#20BA5A] text-white px-4 py-3 rounded-full shadow-lg transition-all hover:scale-105"
-            aria-label="Chat on WhatsApp"
-          >
-            <MessageCircle size={20} />
-            <span className="font-medium">WhatsApp</span>
-          </a>
           <a
             href={telegramLink}
             target="_blank"
